@@ -1,1 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<br/>
+<div class="col-md-4 offset-md-0">
+{% if user.is_authenticated %}
 <h1>DJANGO CRM</h1>
+{% else %}
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+    <form>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="text" class="form-control"  name="username" required>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">login</button>
+      </form>
+</form>
+</div>
+{% endif %}
+{% endblock %}
+
+
